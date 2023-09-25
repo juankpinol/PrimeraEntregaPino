@@ -1,22 +1,26 @@
-// Declarar una variable para controlar el ciclo
-var continuar = true;
+// info que se solicita a prospectos
+var nombres = [];
+var edades = [];
+var sueldos = [];
 
-while (continuar) {
-    // Solicitar al usuario ingresar su edad
-    var edad = parseInt(prompt("Ingresa tu edad:"));
+// Recopilación info de 3 prospectos
+for (var i = 1; i <= 3; i++) {
+    var nombre = prompt("Ingresa el nombre del prospecto " + i + ":");
+    var edad = parseInt(prompt("Ingresa la edad de " + nombre + ":"));
+    var sueldo = parseFloat(prompt("Ingresa el sueldo de " + nombre + ":"));
 
-    // Verificar la condición
-    if (edad >= 18) {
-        console.log("Eres mayor de edad. Puedes votar.");
-    } else {
-        console.log("Eres menor de edad. No puedes votar.");
-    }
-
-    // Preguntar al usuario si desea continuar
-    var respuesta = prompt("¿Quieres verificar otra edad? (S/N)").toUpperCase();
-    if (respuesta !== "S") {
-        continuar = false;
-    }
+    nombres.push(nombre);
+    edades.push(edad);
+    sueldos.push(sueldo);
 }
 
-console.log("Fin del programa.");
+// funnel de ventas
+console.log("Funnel de Ventas:");
+
+for (var i = 0; i < 3; i++) {
+    if (edades[i] >= 18 && sueldos[i] >= 20000) {
+        console.log(nombres[i] + " es un buen prospecto de venta.");
+    } else {
+        console.log(nombres[i] + " no es un buen prospecto de venta.");
+    }
+}
